@@ -3,10 +3,12 @@ import {Link, useNavigate} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 import {MdDownloadForOffline} from 'react-icons/md';
 
-import {client, urlFor} from "../client";
-import {fetchUser} from "../utils/fetchUser";
+import {client, urlFor} from "../../client";
+import {fetchUser} from "../../utils/fetchUser";
 import {BsFillArrowUpRightCircleFill} from "react-icons/bs";
 import {AiTwotoneDelete} from "react-icons/ai";
+
+import './Pin.scss';
 
 const Pin = ({pin: {postedBy, image, _id, destination, save}}) => {
     const [postHovered, setPostHovered] = useState(false);
@@ -50,12 +52,12 @@ const Pin = ({pin: {postedBy, image, _id, destination, save}}) => {
     }
 
     return (
-        <div className='m-2'>
+        <div className='pin'>
             <div
                 onMouseEnter={() => setPostHovered(true)}
                 onMouseLeave={() => setPostHovered(false)}
                 onClick={() => navigate(`/pin-detail/${_id}`)}
-                className='relative cursor-zoom-in w-auto hover:shadow-lg rounded-lg overflow-hidden transition-all duration-500 ease-in-out'
+                className='relative cursor-zoom-in w-auto overflow-hidden transition-all duration-500 ease-in-out'
             >
                 <img className='rounded-lg w-full' src={urlFor(image).width(250).url()} alt="user-post"/>
                 {postHovered && (
@@ -122,9 +124,9 @@ const Pin = ({pin: {postedBy, image, _id, destination, save}}) => {
                 )}
             </div>
 
-            <Link to={`user-profile/${postedBy?._id}`} className='flex gap-2 mt-2 items-center'>
-                <img className='2-8 h-8 rounded-full object-cover' src={postedBy?.image} alt="user-profile"/>
-                <p className='font-semibold capitalize'>{postedBy?.userName}</p>
+            <Link to={`user-profile/${postedBy?._id}`} className='pin__user'>
+                <img className='pin__user-img' src={postedBy?.image} alt="user-profile"/>
+                <p className='pin__user-name'>{postedBy?.userName}</p>
             </Link>
         </div>
     )

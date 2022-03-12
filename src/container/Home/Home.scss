@@ -1,0 +1,8 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.home {
+  padding: 1.6rem;
+  background-color: $color-primary;
+  overflow: hidden;
+}

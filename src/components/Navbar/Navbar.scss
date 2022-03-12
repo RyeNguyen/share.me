@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  &__search {
+    @include borderStyle;
+    width: 80%;
+    height: 4.8rem;
+    background-color: $color-highlight;
+    padding: 8px 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-icon {
+      @include iconMedium;
+      background-image: url('../../asset/icons/icon-search.svg');
+    }
+
+    &-input {
+      width: 100%;
+      background-color: transparent;
+    }
+  }
+
+  &__user {
+    @include borderStyle;
+    @include iconSizeLarge;
+  }
+
+  &__btn {
+    @include borderStyle;
+    @include centerBox;
+    width: 7.6rem;
+    height: 4.8rem;
+    background-color: $color-primary-dark;
+    color: white;
+  }
+}

@@ -1,0 +1,102 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.sidebar {
+  @include borderStyle;
+  min-width: 21.5rem;
+  background-color: $color-tertiary;
+  padding: 1.2rem 0;
+
+  &__logo {
+    @include backgroundImage;
+    width: 10.9rem;
+    height: 3.5rem;
+    margin: 0 0 1.6rem 1.6rem;
+    background-image: url('../../asset/icons/logo.svg');
+  }
+
+  &__title {
+    font-weight: 500;
+    margin: 2.4rem 0 8px 1.6rem;
+  }
+
+  &__item {
+    @include sidebarItemStyle;
+
+    &-name::first-letter {
+      text-transform: uppercase;
+    }
+
+    &--active {
+      @include sidebarItemStyle;
+      font-weight: 500;
+      border-top: 2px solid $color-primary-dark;
+      border-bottom: 2px solid $color-primary-dark;
+      background-color: $color-highlight;
+    }
+  }
+
+  &__icon {
+    @include iconMedium;
+
+    &--home {
+      background-image: url('../../asset/icons/icon-home.svg');
+    }
+
+    &--cats {
+      background-image: url('../../asset/icons/icon-cat.svg');
+    }
+
+    &--dogs {
+      background-image: url('../../asset/icons/icon-dog.svg');
+    }
+
+    &--foods {
+      background-image: url('../../asset/icons/icon-food.svg');
+    }
+
+    &--travel {
+      background-image: url('../../asset/icons/icon-travel.svg');
+    }
+
+    &--nature {
+      background-image: url('../../asset/icons/icon-nature.svg');
+    }
+
+    &--cars {
+      background-image: url('../../asset/icons/icon-car.svg');
+    }
+
+    &--art {
+      background-image: url('../../asset/icons/icon-art.svg');
+    }
+
+    &--photos {
+      background-image: url('../../asset/icons/icon-photo.svg');
+    }
+
+    &--gaming {
+      background-image: url('../../asset/icons/icon-game.svg');
+    }
+
+    &--sport {
+      background-image: url('../../asset/icons/icon-sport.svg');
+    }
+
+    &--quotes {
+      background-image: url('../../asset/icons/icon-quote.svg');
+    }
+
+    &--technology {
+      background-image: url('../../asset/icons/icon-tech.svg');
+    }
+
+    &--interior {
+      background-image: url('../../asset/icons/icon-interior.svg');
+    }
+
+    &--other {
+      background-image: url('../../asset/icons/icon-other.svg');
+    }
+  }
+}

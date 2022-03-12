@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.login {
+  &__bg {
+    background-color: $color-primary;
+
+    &--image {
+      @include backgroundImage;
+      background-image: url('../../asset/images/login__bg.svg');
+    }
+  }
+
+  &__logo {
+    @include backgroundImage;
+    width: 36.1rem;
+    height: 12.8rem;
+    margin-bottom: 6.4rem;
+    background-image: url('../../asset/icons/logo.svg');
+  }
+
+  &__btn {
+    @include borderStyle;
+    background-color: $color-highlight !important;
+    padding: 8px 2.4rem;
+    gap: 8px;
+
+    &-icon {
+      @include iconMedium;
+      background-image: url('../../asset/icons/icon-login.svg');
+    }
+  }
+}

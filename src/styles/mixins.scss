@@ -1,0 +1,64 @@
+@use './variables' as *;
+
+@mixin backgroundImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin centerBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerLayout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin iconSizeSmall {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+@mixin iconSizeMedium {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+@mixin iconSizeLarge {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+@mixin iconSmall {
+  @include iconSizeSmall;
+  @include backgroundImage;
+}
+
+@mixin iconMedium {
+  @include iconSizeMedium;
+  @include backgroundImage;
+}
+
+@mixin iconLarge {
+  @include iconSizeLarge;
+  @include backgroundImage;
+}
+
+@mixin borderStyle {
+  border-radius: 4px;
+  border: 2px solid $color-primary-dark;
+}
+
+@mixin sidebarItemStyle {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px 1.6rem;
+}

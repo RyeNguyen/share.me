@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pin {
+  @include borderStyle;
+  background-color: $color-secondary;
+  padding: 8px;
+  margin-bottom: 1.6rem;
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.6rem;
+
+    &-img {
+      @include borderStyle;
+      @include iconMedium;
+    }
+
+    &-name {
+      font-size: 1.4rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}

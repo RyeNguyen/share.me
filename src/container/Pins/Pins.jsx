@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
-import {Navbar, Feed, PinDetail, CreatePin, Search} from "../components";
+import {CreatePin, Feed, Navbar, PinDetail, Search} from "../../components";
+
+import './Pins.scss';
 
 const Pins = ({user}) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     return (
-        <div className='px-2 md:px-5'>
-            <div className='bg-gray-50'>
-                <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} user={user}/>
-            </div>
+        <div className='pins'>
+            <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} user={user}/>
 
-            <div className='h-full'>
+            <div className='pins__content'>
                 <Routes>
                     <Route path='/' element={<Feed/>}/>
                     <Route path='/category/:categoryId' element={<Feed/>}/>

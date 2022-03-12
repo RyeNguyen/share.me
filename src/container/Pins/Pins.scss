@@ -1,0 +1,12 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pins {
+  margin-left: 1.6rem;
+  overflow: hidden;
+
+  &__content {
+    overflow: auto;
+    margin-top: 1.6rem;
+  }
+}
