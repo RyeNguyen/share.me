@@ -6,6 +6,7 @@
   min-width: 21.5rem;
   background-color: $color-tertiary;
   padding: 1.2rem 0;
+  overflow: hidden;
 
   &__logo {
     @include backgroundImage;
@@ -18,6 +19,11 @@
   &__title {
     font-weight: 500;
     margin: 2.4rem 0 8px 1.6rem;
+  }
+
+  &__items {
+    height: calc(100% - 14rem);
+    overflow: auto;
   }
 
   &__item {
@@ -33,6 +39,10 @@
       border-top: 2px solid $color-primary-dark;
       border-bottom: 2px solid $color-primary-dark;
       background-color: $color-highlight;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 

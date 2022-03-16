@@ -62,7 +62,7 @@ const Home = () => {
                 )}
             </div>
 
-            <div ref={scrollRef}>
+            <div className='home__container' ref={scrollRef}>
                 <Routes>
                     <Route path='/user-profile/:userId' element={<UserProfile/>}/>
                     <Route path='/*' element={<Pins user={user && user}/>}/>

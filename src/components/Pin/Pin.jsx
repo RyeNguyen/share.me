@@ -1,12 +1,9 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
-import {MdDownloadForOffline} from 'react-icons/md';
 
 import {client, urlFor} from "../../client";
 import {fetchUser} from "../../utils/fetchUser";
-import {BsFillArrowUpRightCircleFill} from "react-icons/bs";
-import {AiTwotoneDelete} from "react-icons/ai";
 
 import './Pin.scss';
 
@@ -61,24 +58,10 @@ const Pin = ({pin: {postedBy, image, _id, destination, save}}) => {
             >
                 <img className='rounded-lg w-full' src={urlFor(image).width(250).url()} alt="user-post"/>
                 {postHovered && (
-                    <div
-                        className='absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 z-50'
-                        style={{height: '100%'}}
-                    >
-                        <div className='flex items-center justify-between'>
-                            <div className='flex gap-2'>
-                                <a
-                                    href={`${image?.asset?.url}?dl=`}
-                                    download
-                                    onClick={(e) => e.stopPropagation()}
-                                    className='bg-white w-9 h-9 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none'
-                                >
-                                    <MdDownloadForOffline/>
-                                </a>
-                            </div>
+                    <div className='pin__overlay'>
+                        <div className='flex items-center justify-end'>
                             {alreadySaved ? (
-                                <button type='button'
-                                        className='bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none'>
+                                <button type='button' className='pin__btn'>
                                     {save?.length} Saved
                                 </button>
                             ) : (
@@ -88,24 +71,25 @@ const Pin = ({pin: {postedBy, image, _id, destination, save}}) => {
                                         savePin(_id);
                                     }}
                                     type='button'
-                                    className='bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none'
+                                    className='pin__btn'
                                 >
                                     {savingPost ? 'Saving' : 'Save'}
                                 </button>
                             )}
                         </div>
-                        <div className='flex justify-between items-center gap-2 w-full'>
-                            {destination && (
-                                <a
-                                    href={destination}
-                                    target='blank'
-                                    rel='noreferrer'
-                                    className='bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md'
-                                >
-                                    <BsFillArrowUpRightCircleFill/>
-                                    {destination.length > 15 ? `${destination.slice(0, 15)}...` : destination}
-                                </a>
-                            )}
+
+                        <div className='flex justify-between items-center w-full'>
+                            {/*{destination && (*/}
+                            {/*    <a*/}
+                            {/*        href={destination}*/}
+                            {/*        target='blank'*/}
+                            {/*        rel='noreferrer'*/}
+                            {/*        className='bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md'*/}
+                            {/*    >*/}
+                            {/*        <BsFillArrowUpRightCircleFill/>*/}
+                            {/*        {destination.length > 15 ? `${destination.slice(0, 15)}...` : destination}*/}
+                            {/*    </a>*/}
+                            {/*)}*/}
 
                             {postedBy?._id === user?.googleId && (
                                 <button
@@ -114,11 +98,20 @@ const Pin = ({pin: {postedBy, image, _id, destination, save}}) => {
                                         e.stopPropagation();
                                         deletePin(_id);
                                     }}
-                                    className='bg-white p-2 opacity-70 hover:opacity-100 font-bold text-dark text-base rounded-3xl hover:shadow-md outline-none'
+                                    className='button--icon pin__btn'
                                 >
-                                    <AiTwotoneDelete/>
+                                    <div className='pin__icon delete'/>
                                 </button>
                             )}
+
+                            <a
+                                href={`${image?.asset?.url}?dl=`}
+                                download
+                                onClick={(e) => e.stopPropagation()}
+                                className='button--icon pin__btn download'
+                            >
+                                <div className='pin__icon download'/>
+                            </a>
                         </div>
                     </div>
                 )}

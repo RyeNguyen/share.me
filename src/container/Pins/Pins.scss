@@ -6,7 +6,9 @@
   overflow: hidden;
 
   &__content {
+    height: calc(100vh - 6rem);
     overflow: auto;
     margin-top: 1.6rem;
+    padding-bottom: 1.6rem;
   }
 }
